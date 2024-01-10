@@ -1,2 +1,4 @@
 # IGNORE .exe FILES
 **/*.exe
+#IGNORE .vscode FILE
+.vscode/*
