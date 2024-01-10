@@ -55,6 +55,79 @@ public:
         }
     };
 };
+class UserList
+{
+public:
+    std::vector<User> usersList;
+    UserList(){};
+    void addUser(User *user)
+    {
+        usersList.emplace_back(*user);
+    };
+    void displayAllUsers()
+    {
+        for (int i = 0; i < usersList.size(); i++)
+        {
+            std::cout << usersList.at(i).username << "\n";
+        }
+    };
+    void findUserByUsername(std::string username)
+    {
+        for (int i = 0; i < usersList.size(); i++)
+        {
+            if (usersList.at(i).username == username)
+            {
+                std::cout << usersList.at(i).username << "\n";
+                return;
+            }
+        }
+        std::cout << "User not found"
+                  << "\n";
+    };
+    void findUserById(int id)
+    {
+        for (int i = 0; i < usersList.size(); i++)
+        {
+            if (usersList.at(i).id == id)
+            {
+                std::cout << usersList.at(i).username << "\n";
+                return;
+            }
+        }
+        std::cout << "User not found"
+                  << "\n";
+    };
+    void deleteUserByUsername(std::string username)
+    {
+        for (int i = 0; i < usersList.size(); i++)
+        {
+            if (usersList.at(i).username == username)
+            {
+                usersList.erase(usersList.begin() + i);
+                std::cout << "User deleted successfully"
+                          << "\n";
+                return;
+            }
+        }
+        std::cout << "User not found"
+                  << "\n";
+    };
+    void deleteUserById(int id)
+    {
+        for (int i = 0; i < usersList.size(); i++)
+        {
+            if (usersList.at(i).id == id)
+            {
+                usersList.erase(usersList.begin() + i);
+                std::cout << "User deleted successfully"
+                          << "\n";
+                return;
+            }
+        }
+        std::cout << "User not found"
+                  << "\n";
+    };
+};
 class BookNode
 {
 public:
@@ -379,55 +452,39 @@ public:
     }
     void showMenu()
     {
+        char userChoice;
         std::cout << "\t---------------WELCOME TO LIB PROCURATIO---------------"
                   << "\n";
         std::cout << "\t\tPLEASE SELECT AN OPTION FROM THE FOLLOWING"
                   << "\n";
-        std::cout << "1. Create new user"
-                  << "\n";
-        std::cout << "2. Show all users"
-                  << "\n";
-        std::cout << "3. Show all books"
-                  << "\n";
-        std::cout << "4. Search for a book"
-                  << "\n";
-        std::cout << "5. Return a book"
-                  << "\n";
-        std::cout << "6. Sort books"
-                  << "\n";
-        std::cout << "7. Show issued books of current user"
-                  << "\n";
-        std::cout << "7. Quit"
-                  << "\n";
-        handleUserChoice();
+        while (userChoice != '0')
+        {
+            std::cout << "1. Create new user"
+                      << "\n";
+            std::cout << "2. Show all users"
+                      << "\n";
+            std::cout << "3. Show all books"
+                      << "\n";
+            std::cout << "4. Search for a book"
+                      << "\n";
+            std::cout << "5. Return a book"
+                      << "\n";
+            std::cout << "6. Sort books"
+                      << "\n";
+            std::cout << "7. Show issued books"
+                      << "\n";
+            std::cout << "8. Quit"
+                      << "\n";
+            std::cin >> userChoice;
+            handleUserChoice(userChoice);
+        }
     }
-
-    void handleUserChoice()
+    void handleUserChoice(char userChoice)
     {
-        char userChoice;
-        std::cin >> userChoice;
         switch (userChoice)
         {
         case '1':
-            break;
-        case '2':
-            break;
-        case '3':
-            break;
-        case '4':
-            break;
-        case '5':
-            break;
-        case '6':
-            break;
-        case '7':
-            break;
-        case '8':
-            break;
-        default:
-            std::cout << "Invalid choice. Please try again."
-                      << "\n";
-            handleUserChoice();
+            std::cout << "bigga";
             break;
         }
     }
